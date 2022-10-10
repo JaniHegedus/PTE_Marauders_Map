@@ -1,14 +1,10 @@
 package com.example.pte_marauders_map;
 
-import static com.example.pte_marauders_map.Variables.setActivity;
 import static com.example.pte_marauders_map.Variables.getStarted;
+import static com.example.pte_marauders_map.Variables.setActivity;
 import static com.example.pte_marauders_map.Variables.setStartedOn;
 
 import android.annotation.SuppressLint;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,13 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowInsets;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.namespace.R;
 import com.example.namespace.databinding.ActivityMainScreenBinding;
 import com.example.pte_marauders_map.Default.Help;
 import com.example.pte_marauders_map.Default.Settings;
-import com.example.pte_marauders_map.Test.GpsActivity;
-import com.example.pte_marauders_map.data.LoginDataSource;
-import com.example.pte_marauders_map.ui.login.LoginActivity;
+import com.example.pte_marauders_map.login.Login;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -98,11 +95,11 @@ public class MainScreen extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         binding.offlineButton.setOnTouchListener((v, event)-> {
-            startActivity(new Intent(this, GpsActivity.class));
+            startActivity(new Intent(this, Maps.class));
             return true;
         });
         binding.onlineButton.setOnTouchListener((v, event) -> {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, Login.class));
             return true;
         });
     }

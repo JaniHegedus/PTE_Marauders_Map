@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="238dp"
             app:srcCompat="@drawable/ttkmap__10_"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,ImageContrastCheck" />
     </FrameLayout>
 
 </FrameLayout>

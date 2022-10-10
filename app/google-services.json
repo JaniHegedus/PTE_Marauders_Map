@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "190389442777",
+    "project_id": "meta-fulcrum-365116",
+    "storage_bucket": "meta-fulcrum-365116.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190389442777:android:657123582d4a47c92646c8",
+        "android_client_info": {
+          "package_name": "com.example.pte_marauders_map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "190389442777-klqa3tr8amsihku2bumjo6o4a9ndlnpa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz2VdU3N1Yoi-69e4LH0RZ7n3JxEA5oEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "190389442777-klqa3tr8amsihku2bumjo6o4a9ndlnpa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

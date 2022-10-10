@@ -136,4 +136,18 @@
     <string name="welcome_string" translatable="false">PTE Marauder\'s Map</string>
     <string name="offline" translatable="false">Offline</string>
     <string name="online" translatable="false">Online</string>
+    <string name="google_maps_key">AIzaSyCa2vQnQ5CSQoEiMTPvN0H18cZr2qdohng</string>
+    <string name="age">Age</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
+    <string name="profile">Profile</string>
+    <string name="refresh">Refresh</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_of_attempts_remaining">No of attempts remaining:</string>
+    <string name="new_user_sign_up">New User? Sign Up!</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reg">reg</string>
+    <string name="sec">sec</string>
 </resources>

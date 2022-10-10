@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="CoarseFineLocation" >
+    tools:ignore="CoarseFineLocation"
+    android:installLocation="preferExternal">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,17 +22,85 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PTE_Marauders_Map"
-        tools:targetApi="31" >
+        tools:targetApi="31"
+        >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCa2vQnQ5CSQoEiMTPvN0H18cZr2qdohng" />
+
+
         <activity
-            android:name="com.example.pte_marauders_map.ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+            android:name="com.example.pte_marauders_map.login.UpdateProfile"
+            android:label="@string/update"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.UpdatePassword"
+            android:label="@string/update"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.RegistrationActivity"
+            android:label="@string/reg"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.PasswordActivity"
+            android:label="@string/password"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.ProfileActivity"
+            android:label="@string/profile"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.SecondActivity"
+            android:label="@string/sec"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.pte_marauders_map.login.Login"
+            android:label="@string/login"
+            android:exported="true">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+        </activity>
+
+        <activity
+            android:name="com.example.pte_marauders_map.Maps"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name="com.example.pte_marauders_map.MainScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="@string/title_activity_main_screen"
-            android:theme="@style/Theme.PTE_Marauders_Map.Fullscreen" >
+            android:theme="@style/Theme.PTE_Marauders_Map.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +110,7 @@
         <activity
             android:name="com.example.pte_marauders_map.Default.Settings"
             android:exported="false"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_settings">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -44,15 +119,14 @@
             android:name="com.example.pte_marauders_map.Default.Help"
             android:exported="false"
             android:label="@string/title_activity_help"
-            android:theme="@style/Theme.PTE_Marauders_Map.NoActionBar" >
+            android:theme="@style/Theme.PTE_Marauders_Map.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name="com.example.pte_marauders_map.Test.GpsActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
