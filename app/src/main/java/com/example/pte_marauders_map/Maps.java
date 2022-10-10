@@ -3,13 +3,19 @@ package com.example.pte_marauders_map;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.namespace.R;
+import com.example.pte_marauders_map.login.Login;
+import com.example.pte_marauders_map.login.ProfileActivity;
+import com.example.pte_marauders_map.login.SecondActivity;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Maps extends AppCompatActivity
 {
@@ -17,6 +23,7 @@ public class Maps extends AppCompatActivity
 
     private GoogleMap mGoogleMap;
     private RadarMapView mMapView;
+    private FirebaseAuth firebaseAuth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,7 +44,34 @@ public class Maps extends AppCompatActivity
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+    private void Logout(){
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(this, Login.class));
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.logoutMenu:{
+                Logout();
+                break;
+            }
+            case R.id.profileMenu:
+                startActivity(new Intent(this, ProfileActivity.class));
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);

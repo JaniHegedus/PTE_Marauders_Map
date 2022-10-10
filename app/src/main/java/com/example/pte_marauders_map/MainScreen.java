@@ -24,6 +24,8 @@ import com.example.namespace.databinding.ActivityMainScreenBinding;
 import com.example.pte_marauders_map.Default.Help;
 import com.example.pte_marauders_map.Default.Settings;
 import com.example.pte_marauders_map.login.Login;
+import com.example.pte_marauders_map.login.ProfileActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -99,7 +101,13 @@ public class MainScreen extends AppCompatActivity {
             return true;
         });
         binding.onlineButton.setOnTouchListener((v, event) -> {
-            startActivity(new Intent(this, Login.class));
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                startActivity(new Intent(this, Login.class));
+            }
+            else{
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                startActivity(new Intent(this, ProfileActivity.class));
+            }
             return true;
         });
     }

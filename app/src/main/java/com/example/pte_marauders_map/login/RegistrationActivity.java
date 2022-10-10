@@ -1,5 +1,7 @@
 package com.example.pte_marauders_map.login;
 
+import static android.content.Intent.createChooser;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.namespace.R;
@@ -23,8 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -53,24 +52,21 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         setupUIViews();
-        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
 
         storageReference = firebaseStorage.getReference();
 
         userProfilePic.setOnClickListener(view -> {
-            Intent intent = new Intent();
-            intent.setType("images/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE);
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(createChooser(intent, "Select Image"), PICK_IMAGE);
         });
 
 
@@ -121,7 +117,7 @@ public class RegistrationActivity extends AppCompatActivity {
         age = userAge.getText().toString();
 
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty()){
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || age.isEmpty()|| imagePath == null){
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else{
             result = true;

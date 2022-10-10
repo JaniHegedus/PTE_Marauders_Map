@@ -1,4 +1,5 @@
 package com.example.pte_marauders_map.login;
+
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,16 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.namespace.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
+import com.example.pte_marauders_map.Maps;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Login extends AppCompatActivity {
 
@@ -89,17 +89,17 @@ public class Login extends AppCompatActivity {
     private void checkEmailVerification(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         assert firebaseUser != null;
-        Boolean emailflag = firebaseUser.isEmailVerified();
+        boolean emailflag = firebaseUser.isEmailVerified();
 
-        startActivity(new Intent(Login.this, SecondActivity.class));
+        startActivity(new Intent(this, SecondActivity.class));
 
-//        if(emailflag){
-//            finish();
-//            startActivity(new Intent(MainActivity.this, SecondActivity.class));
-//        }else{
-//            Toast.makeText(this, "Verify your email", Toast.LENGTH_SHORT).show();
-//            firebaseAuth.signOut();
-//        }
+        if(emailflag){
+            finish();
+            startActivity(new Intent(this, SecondActivity.class));
+       }else{
+            Toast.makeText(this, "Verify your email", Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
     }
 
 }

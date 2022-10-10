@@ -4,6 +4,7 @@ package com.example.pte_marauders_map.login;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +25,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+        //Log.i("UID",firebaseAuth.getUid().toString());
         Button logout = findViewById(R.id.btnLogout);
 
         logout.setOnClickListener(view -> Logout());
@@ -52,7 +53,7 @@ public class SecondActivity extends AppCompatActivity {
                 break;
             }
             case R.id.profileMenu:
-                startActivity(new Intent(SecondActivity.this, ProfileActivity.class));
+                startActivity(new Intent(this, ProfileActivity.class));
                 break;
 
         }
