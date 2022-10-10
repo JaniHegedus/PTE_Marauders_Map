@@ -1,4 +1,4 @@
-package com.example.pte_marauders_map;
+package com.example.pte_marauders_map.Test;
 
 
 import android.Manifest;
@@ -21,10 +21,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.namespace.R;
+import com.example.pte_marauders_map.Default.Help;
+import com.example.pte_marauders_map.Default.Settings;
+import com.example.pte_marauders_map.MainScreen;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationCallback;
@@ -61,31 +65,18 @@ public class GpsActivity extends AppCompatActivity {
 
         LocationButton.setOnClickListener(v -> getCurrentLocation());
 
-
-    }
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return true;
-    }
-    @SuppressLint("NonConstantResourceId")
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        //respond to menu item selection
-        switch (item.getItemId()) {
-            case R.id.title:
-                startActivity(new Intent(this, GpsActivity.class));
-                return true;
-            case R.id.help:
-                startActivity(new Intent(this, Help.class));
-                return true;
-            case R.id.action_settings:
-                startActivity(new Intent(this, Settings.class));
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        GpsActivity.this.startActivity(new Intent(GpsActivity.this, Settings.class));
+        finish();
+        return true;
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

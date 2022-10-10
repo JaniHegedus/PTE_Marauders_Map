@@ -1,22 +1,24 @@
-package com.example.pte_marauders_map;
+package com.example.pte_marauders_map.Default;
 
+import static com.example.pte_marauders_map.Variables.setActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
-
 import com.example.namespace.R;
+import com.example.pte_marauders_map.MainScreen;
+import com.example.pte_marauders_map.Test.GpsActivity;
 
 public class Settings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setActivity(1);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
         if (savedInstanceState == null) {
@@ -33,7 +35,7 @@ public class Settings extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.settings_menu, menu);
         return true;
     }
     @SuppressLint("NonConstantResourceId")
@@ -47,13 +49,17 @@ public class Settings extends AppCompatActivity {
             case R.id.help:
                 startActivity(new Intent(this, Help.class));
                 return true;
-            case R.id.action_settings:
-                startActivity(new Intent(this, Settings.class));
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        Settings.this.startActivity(new Intent(Settings.this, MainScreen.class));
+        finish();
+        return true;
+    }
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
